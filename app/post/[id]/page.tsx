@@ -73,11 +73,16 @@ export default async function PostPage({
     },
   });
 
-  const categoryMap = {
+  const categoryMap: Record<string, string> = {
     BDFD: "bdfd",
     AOIJS: "aoijs",
     JS: "js",
+    PYTHON: "python",
     ALTYAPI: "altyapi",
+    BDFD_PLUS: "bdfd-plus",
+    AOIJS_PLUS: "aoijs-plus",
+    JS_PLUS: "js-plus",
+    PYTHON_PLUS: "python-plus",
   };
 
   return (
