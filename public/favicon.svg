@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="128" fill="#3b82f6"/>
+  <g fill="#ffffff">
+    <!-- M Letter -->
+    <path d="M120 180h50l40 80 40-80h50v180h-40v-100l-40 80h-20l-40-80v100h-40z"/>
+    <!-- Code Brackets -->
+    <path d="M340 220l30 30-30 30v20l50-50-50-50z"/>
+    <path d="M320 220v20l-30 30 30 30v20l-50-50z"/>
+  </g>
+</svg>

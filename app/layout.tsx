@@ -17,8 +17,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Marvel - Kod & Altyapı Paylaşım Platformu",
+  title: {
+    default: "Marvel - Kod & Altyapı Paylaşım Platformu",
+    template: "%s | Marvel"
+  },
   description: "Discord tabanlı modern kod ve altyapı paylaşım platformu. BDFD, AOI.JS, JavaScript ve altyapı kodlarınızı paylaşın.",
+  keywords: ["BDFD", "AOI.JS", "JavaScript", "Python", "Discord Bot", "Kod Paylaşım", "Altyapı"],
+  authors: [{ name: "Marvel Team" }],
+  creator: "Marvel Team",
+  manifest: '/site.webmanifest',
+  openGraph: {
+    type: 'website',
+    locale: 'tr_TR',
+    url: 'https://marvel-code.vercel.app',
+    title: 'Marvel - Kod & Altyapı Paylaşım Platformu',
+    description: 'Discord tabanlı modern kod ve altyapı paylaşım platformu',
+    siteName: 'Marvel',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Marvel - Kod & Altyapı Paylaşım Platformu',
+    description: 'Discord tabanlı modern kod ve altyapı paylaşım platformu',
+  },
 };
 
 export default function RootLayout({
