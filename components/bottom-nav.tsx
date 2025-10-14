@@ -17,11 +17,6 @@ export function BottomNav() {
   const sheetRef = useRef<HTMLDivElement>(null);
   const startY = useRef(0);
 
-  // Auth sayfalarında bottom nav gösterme
-  if (pathname?.startsWith('/auth')) {
-    return null;
-  }
-
   // Touch events
   const handleTouchStart = (e: React.TouchEvent) => {
     startY.current = e.touches[0].clientY;
@@ -59,6 +54,11 @@ export function BottomNav() {
       setIsDragging(false);
     }
   }, [showCategories]);
+
+  // Auth sayfalarında bottom nav gösterme
+  if (pathname?.startsWith('/auth')) {
+    return null;
+  }
 
   const categories = [
     { name: "BDFD", href: "/category/bdfd", color: "text-blue-500" },
