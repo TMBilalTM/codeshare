@@ -10,6 +10,7 @@ import { ArrowLeft, Calendar, User, Eye } from "lucide-react";
 import Image from "next/image";
 import { CodeBlock } from "@/components/code-block";
 import { LikeButton } from "@/components/like-button";
+import { DeletePostButton } from "@/components/delete-post-button";
 
 export default async function PostPage({
   params,
@@ -39,13 +40,8 @@ export default async function PostPage({
           username: true,
         },
       },
-      _count: {
-        select: {
-          likes: true,
-        },
-      },
     },
-  });
+  }) as any;
 
   if (!post) {
     notFound();
@@ -73,6 +69,12 @@ export default async function PostPage({
     },
   });
 
+  // Like sayısını al
+  // @ts-ignore - Prisma types will be correct at runtime
+  const likeCount = await prisma.like.count({
+    where: { postId: id },
+  });
+
   const categoryMap: Record<string, string> = {
     BDFD: "bdfd",
     AOIJS: "aoijs",
@@ -87,13 +89,23 @@ export default async function PostPage({
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
-      {/* Back Button */}
-      <Button asChild variant="ghost">
-        <Link href={`/category/${categoryMap[post.category]}`}>
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Geri Dön
-        </Link>
-      </Button>
+      {/* Back Button & Delete Button */}
+      <div className="flex items-center justify-between">
+        <Button asChild variant="ghost">
+          <Link href={`/category/${categoryMap[post.category]}`}>
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Geri Dön
+          </Link>
+        </Button>
+        
+        {/* Sadece post sahibi görebilir */}
+        {session.user.id === post.authorId && (
+          <DeletePostButton 
+            postId={post.id} 
+            categorySlug={categoryMap[post.category]} 
+          />
+        )}
+      </div>
 
       {/* Post Card */}
       <Card>
@@ -144,7 +156,7 @@ export default async function PostPage({
           <div className="pt-4 border-t">
             <LikeButton
               postId={post.id}
-              initialLikeCount={(post as any)._count?.likes || 0}
+              initialLikeCount={likeCount}
               initialIsLiked={!!userLike}
             />
           </div>
