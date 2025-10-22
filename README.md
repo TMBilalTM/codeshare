@@ -1,88 +1,93 @@
-# 🚀 Marvel - Kod & Altyapı Paylaşım Platformu
+# 🚀 **Marvel**  
+### _Discord Tabanlı Kod & Altyapı Paylaşım Platformu_
 
-Modern, güvenli ve kullanıcı dostu Discord tabanlı kod paylaşım platformu. Next.js 15, TypeScript ve MongoDB Atlas ile geliştirilmiştir.
+Modern, güvenli ve kullanıcı dostu bir **kod paylaşım platformu**.  
+Next.js 15, TypeScript ve MongoDB Atlas altyapısıyla geliştirilmiştir.
+
+---
+
+## 🧩 **Teknoloji Rozetleri**
 
 ![Next.js](https://img.shields.io/badge/Next.js-15-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38bdf8)
 
-## ✨ Özellikler
+---
 
-- 🔐 **Discord OAuth 2.0** - Güvenli ve hızlı giriş
-- 👥 **Sunucu Doğrulama** - Sadece Discord sunucusu üyeleri içerikleri görebilir
-- 🎭 **Rol Tabanlı Yetkilendirme** - Belirli rol sahipleri kod paylaşabilir
-- 📝 **4 Kategori** - BDFD, AOI.JS, JavaScript ve Altyapı
-- 🌙 **Dark Mode** - Modern ve göz yormayan tasarım
-- 📱 **Responsive Design** - Her cihazda mükemmel görünüm
-- ⚡ **Yüksek Performans** - Next.js 15 App Router
+## ✨ **Öne Çıkan Özellikler**
 
-## 🛠️ Teknolojiler
+- 🔐 **Discord OAuth 2.0** — Güvenli & hızlı kimlik doğrulama  
+- 👥 **Sunucu Doğrulama** — Sadece Discord sunucu üyeleri erişebilir  
+- 🧩 **Rol Tabanlı Yetkilendirme** — Belirli roller paylaşım yapabilir  
+- 🗂️ **4 Kategori:** BDFD, AOI.JS, JavaScript, Altyapı  
+- 🌙 **Dark Mode** — Modern, göz yormayan tema  
+- 📱 **Tam Responsive** — Mobil, tablet, masaüstü uyumlu  
+- ⚡ **Yüksek Performans** — App Router ile optimize edilmiş Next.js 15 yapısı  
 
-- **Framework:** Next.js 15 (App Router)
-- **Dil:** TypeScript
-- **Veritabanı:** MongoDB Atlas
-- **ORM:** Prisma
-- **Kimlik Doğrulama:** NextAuth.js v5
-- **Stil:** Tailwind CSS
-- **UI Bileşenleri:** Shadcn UI
-- **İkonlar:** Lucide React
+---
 
-## 📋 Gereksinimler
+## 🛠️ **Kullanılan Teknolojiler**
 
-- Node.js 18+ 
+| Kategori | Teknoloji |
+|-----------|------------|
+| Framework | **Next.js 15 (App Router)** |
+| Dil | **TypeScript** |
+| Veritabanı | **MongoDB Atlas** |
+| ORM | **Prisma** |
+| Kimlik Doğrulama | **NextAuth.js v5** |
+| Stil | **Tailwind CSS + Shadcn UI** |
+| İkonlar | **Lucide React** |
+
+---
+
+## ⚙️ **Gereksinimler**
+
+- Node.js 18+
 - npm veya yarn
 - MongoDB Atlas hesabı
 - Discord Developer Application
 - Discord Bot Token
 
-## 🚀 Kurulum
+---
 
-### 1. Projeyi Klonlayın
+## 🚀 **Kurulum Adımları**
 
-\`\`\`bash
+### 1️⃣ Projeyi Klonlayın
+```bash
 git clone <repository-url>
 cd marvel
-\`\`\`
+```
 
-### 2. Bağımlılıkları Yükleyin
-
-\`\`\`bash
+### 2️⃣ Bağımlılıkları Yükleyin
+```bash
 npm install
-\`\`\`
+```
 
-### 3. MongoDB Atlas Kurulumu
+### 3️⃣ MongoDB Atlas Bağlantısı
+1. [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)’ta hesap oluşturun  
+2. Yeni bir cluster oluşturun (Free Tier yeterli)  
+3. Database kullanıcı ve IP erişimi tanımlayın  
+4. Connection string’i kopyalayın  
 
-1. [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) hesabı oluşturun
-2. Yeni bir cluster oluşturun (ücretsiz tier yeterli)
-3. Database Access bölümünden bir kullanıcı oluşturun
-4. Network Access bölümünden IP adresinizi ekleyin (0.0.0.0/0 - tüm IP'ler)
-5. Connect butonuna tıklayıp connection string'i kopyalayın
+### 4️⃣ Discord Uygulaması Oluşturun
+1. [Discord Developer Portal](https://discord.com/developers/applications)’a gidin  
+2. **New Application → OAuth2** sekmesine girin  
+3. Redirect URL olarak ekleyin:  
+   ```
+   http://localhost:3000/api/auth/callback/discord
+   ```
+4. Bot oluşturun ve **SERVER MEMBERS INTENT** & **PRESENCE INTENT** aktif edin  
+5. URL Generator’dan botu sunucunuza ekleyin  
 
-### 4. Discord Uygulaması Oluşturma
+### 5️⃣ `.env` Dosyası
+Aşağıdaki değişkenleri `.env` dosyanıza ekleyin:
 
-1. [Discord Developer Portal](https://discord.com/developers/applications) adresine gidin
-2. "New Application" butonuna tıklayın
-3. **OAuth2** sekmesinden:
-   - Client ID ve Client Secret'i kopyalayın
-   - Redirect URLs: \`http://localhost:3000/api/auth/callback/discord\` ekleyin
-4. **Bot** sekmesinden:
-   - Bot oluşturun ve token'ı kopyalayın
-   - "SERVER MEMBERS INTENT" ve "PRESENCE INTENT" açın
-5. **OAuth2 > URL Generator**:
-   - Scopes: \`bot\` ve \`applications.commands\`
-   - Bot Permissions: \`Read Messages/View Channels\`
-   - URL'i kopyalayıp botunuzu sunucunuza ekleyin
+```env
+# MongoDB Atlas
+DATABASE_URL="mongodb+srv://username:password@cluster.mongodb.net/marvel"
 
-### 5. Environment Variables
-
-\`.env\` dosyası oluşturun ve aşağıdaki değişkenleri ekleyin:
-
-\`\`\`env
-# MongoDB Atlas Connection String
-DATABASE_URL="mongodb+srv://username:password@cluster.mongodb.net/marvel?retryWrites=true&w=majority"
-
-# NextAuth Configuration
+# NextAuth
 NEXTAUTH_URL="http://localhost:3000"
 NEXTAUTH_SECRET="openssl rand -base64 32 ile oluşturun"
 
@@ -91,38 +96,33 @@ DISCORD_CLIENT_ID="your-discord-client-id"
 DISCORD_CLIENT_SECRET="your-discord-client-secret"
 DISCORD_BOT_TOKEN="your-discord-bot-token"
 
-# Discord Server Configuration
+# Discord Server Settings
 DISCORD_SERVER_ID="1310956663773270066"
 DISCORD_REQUIRED_ROLE_ID="963381380371345508"
 DISCORD_SERVER_INVITE="https://discord.gg/gqCSn6Y7rU"
-\`\`\`
+```
 
-**NEXTAUTH_SECRET oluşturmak için:**
-\`\`\`bash
+💡 **NEXTAUTH_SECRET oluşturmak için:**
+```bash
 openssl rand -base64 32
-\`\`\`
+```
 
-### 6. Prisma ve Veritabanı
-
-\`\`\`bash
-# Prisma Client oluştur
+### 6️⃣ Prisma Ayarları
+```bash
 npx prisma generate
-
-# Veritabanını senkronize et (MongoDB için migration gerekmez)
 npx prisma db push
-\`\`\`
+```
 
-### 7. Geliştirme Sunucusunu Başlatın
-
-\`\`\`bash
+### 7️⃣ Geliştirme Sunucusunu Başlatın
+```bash
 npm run dev
-\`\`\`
+```
+🖥️ Tarayıcıdan [http://localhost:3000](http://localhost:3000) adresini açın.
 
-Tarayıcınızda [http://localhost:3000](http://localhost:3000) adresini açın.
+---
 
-## 📁 Proje Yapısı
-
-\`\`\`
+## 🧱 **Proje Klasör Yapısı**
+```
 marvel/
 ├── app/
 │   ├── api/
@@ -150,75 +150,76 @@ marvel/
 │   └── utils.ts
 ├── prisma/
 │   └── schema.prisma
-├── types/
-│   └── next-auth.d.ts
-└── .env
-\`\`\`
-
-## 🔑 Önemli Notlar
-
-### Discord Sunucu ID Bulma
-1. Discord'da Developer Mode'u açın (Ayarlar > Gelişmiş > Geliştirici Modu)
-2. Sunucuya sağ tıklayın ve "ID'yi Kopyala"
-
-### Discord Rol ID Bulma
-1. Sunucu Ayarları > Roller
-2. Role sağ tıklayın ve "ID'yi Kopyala"
-
-### Yetkilendirme Sistemi
-- **Tüm Kullanıcılar:** Discord ile giriş yapabilir
-- **Sunucu Üyeleri:** İçerikleri görüntüleyebilir
-- **Belirli Rol Sahipleri:** Kod/altyapı paylaşabilir (DISCORD_REQUIRED_ROLE_ID)
-
-## 🌐 Production Deployment
-
-### Vercel Deployment
-
-1. [Vercel](https://vercel.com) hesabınıza giriş yapın
-2. Projenizi import edin
-3. Environment Variables ekleyin
-4. Deploy butonuna tıklayın
-
-⚠️ **Önemli:** Production'da NEXTAUTH_URL'i gerçek domain'inize güncelleyin!
-
-\`\`\`env
-NEXTAUTH_URL="https://your-domain.vercel.app"
-\`\`\`
-
-Discord Developer Portal'dan redirect URL'inizi de güncelleyin:
-\`\`\`
-https://your-domain.vercel.app/api/auth/callback/discord
-\`\`\`
-
-## 🤝 Katkıda Bulunma
-
-1. Bu repository'yi fork edin
-2. Feature branch oluşturun (\`git checkout -b feature/amazing-feature\`)
-3. Değişikliklerinizi commit edin (\`git commit -m 'feat: Add amazing feature'\`)
-4. Branch'inizi push edin (\`git push origin feature/amazing-feature\`)
-5. Pull Request açın
-
-## 📄 Lisans
-
-Bu proje MIT lisansı altında lisanslanmıştır.
-
-## 🆘 Destek
-
-Herhangi bir sorunuz veya sorununuz mu var?
-
-- Discord Sunucusu: [https://discord.gg/gqCSn6Y7rU](https://discord.gg/gqCSn6Y7rU)
-- Issues: GitHub Issues bölümünü kullanın
-
-## 🎯 Gelecek Özellikler
-
-- [ ] Kod söz dizimi vurgulama
-- [ ] Favorilere ekleme
-- [ ] Yorum sistemi
-- [ ] Arama ve filtreleme
-- [ ] Kullanıcı profilleri
-- [ ] Kod beğenme/rating sistemi
-- [ ] Admin paneli
+└── types/
+    └── next-auth.d.ts
+```
 
 ---
 
-**Made with ❤️ by BilalTM**
+## 🔑 **Yetkilendirme Sistemi**
+
+| Kullanıcı Türü | Yetki |
+|----------------|--------|
+| Tüm Discord kullanıcıları | Giriş yapabilir |
+| Sunucu üyeleri | İçerikleri görüntüleyebilir |
+| Belirli rol sahipleri | Kod & altyapı paylaşabilir |
+
+📘 **Rol ID & Sunucu ID öğrenmek için:**
+- Developer Mode → Sağ tıklayın → “ID’yi Kopyala”
+
+---
+
+## 🌐 **Production (Vercel) Dağıtımı**
+
+1. [Vercel](https://vercel.com)’de oturum açın  
+2. Repo’yu import edin  
+3. Environment Variables ekleyin  
+4. Deploy butonuna tıklayın  
+
+⚠️ **Önemli:**  
+Production ortamında `NEXTAUTH_URL` ve Discord redirect URL’ini güncelleyin:
+```env
+NEXTAUTH_URL="https://your-domain.vercel.app"
+```
+Discord Redirect:
+```
+https://your-domain.vercel.app/api/auth/callback/discord
+```
+
+---
+
+## 🤝 **Katkıda Bulunmak**
+
+1. Repo’yu fork edin  
+2. Branch açın (`git checkout -b feature/amazing-feature`)  
+3. Değişiklikleri commit’leyin  
+4. Push edin ve Pull Request açın  
+
+---
+
+## 📄 **Lisans**
+
+Bu proje **MIT Lisansı** ile lisanslanmıştır.  
+Dilediğiniz gibi kullanabilir, geliştirebilir ve paylaşabilirsiniz.
+
+---
+
+## 💬 **Destek & İletişim**
+
+🐛 Hata veya öneri → GitHub **Issues** sekmesini kullanın  
+
+---
+
+## 🧠 **Yakında Gelecek Özellikler**
+
+- [ ] Kod söz dizimi vurgulama  
+- [ ] Favorilere ekleme  
+- [ ] Yorum sistemi  
+- [ ] Arama & filtreleme  
+- [ ] Kullanıcı profilleri  
+- [ ] Beğeni / rating sistemi  
+- [ ] Admin paneli  
+
+---
+
+### 🖤 Made with passion by **BilalTM**
